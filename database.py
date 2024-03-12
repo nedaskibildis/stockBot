@@ -3,6 +3,9 @@ from scraper import scrapeStocks
 con = sqlite3.connect("")
 cursor = con.cursor()
 
+# Delete Table For Testing Purposes So Database doesn't get too full
+cursor.execute("DELETE FROM StockTransactions")
+
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS  StockTransactions (
     Politician TEXT,
