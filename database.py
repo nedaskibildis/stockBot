@@ -3,9 +3,6 @@ from scraper import scrapeStocks
 con = sqlite3.connect("")
 cursor = con.cursor()
 
-# Delete Table For Testing Purposes So Database doesn't get too full
-cursor.execute("DELETE FROM StockTransactions")
-
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS  StockTransactions (
     Politician TEXT,
@@ -18,17 +15,18 @@ cursor.execute("""
     )
 """)
 
+def checkExisting(transaction):
+    cursor.execute("""
+        SELECT COUNT(*) FROM StockTransactions 
+        WHERE Politician=:politician AND Stocks=:stocks AND BuyOrSell=:buyOrSell AND SizeOf=:sizeOf AND PriceOfStock=:priceOfStock AND DateBought=:dateBought AND DatePublished=:datePublished
+    """, transaction)
+    count = cursor.fetchone()[0]
+    return count > 0
+
 stockTransaction = scrapeStocks()
 for stock in stockTransaction:
+    checkExisting(stock)
     cursor.execute("INSERT INTO StockTransactions (politician, Stocks, BuyOrSell, SizeOf, PriceOfStock, DateBought, DatePublished) VALUES (:politician, :stocks, :buyOrSell, :sizeOf, :priceOfStock, :dateBought, :datePublished)", stock)
-
-cursor.execute("SELECT * FROM StockTransactions LIMIT 10")
-rows = cursor.fetchall()
-
-if rows:
-    print("Data found in 'StockTransactions':")
-    for row in rows:
-        print(row)
 
 con.commit()
 cursor.close()
