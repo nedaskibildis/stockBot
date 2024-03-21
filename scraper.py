@@ -1,6 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-from datetime import datetime
+import datetime
 
 def scrapeStocks():
     url = "https://www.capitoltrades.com/trades?txDate=30d&per_page=96#"
@@ -39,10 +39,10 @@ def scrapeStocks():
         datePublished_year = datePublished_info.find('div', class_='q-label').text
         datePublished_date = datePublished_info.find('div', class_='q-value').text
         if datePublished_year == "Today":
-            transaction['datePublished'] = datetime.now().strftime("%Y %d %b")
+            transaction['datePublished'] = datetime.datetime.now().strftime("%Y %d %b")
         elif datePublished_year == "Yesterday":
-            yesterday = datetime.now() - datetime.timedelta(days=1)
-            transaction['datePublished'] = datetime.now().strftime("%Y %d %b")
+            yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+            transaction['datePublished'] = datetime.datetime.now().strftime("%Y %d %b")
         else:
             transaction['datePublished'] = datePublished_year + datePublished_date
 

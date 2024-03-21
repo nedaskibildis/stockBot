@@ -1,9 +1,12 @@
 import sqlite3
 from scraper import scrapeStocks
 
-def setupDb():
+def setupDb(dropFirst = False):
     con = sqlite3.connect("discordBot.db")
     cursor = con.cursor()
+    if dropFirst:
+        cursor.execute("DROP TABLE IF EXISTS {}".format('StockTransactions'))
+    
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS  StockTransactions (
         Politician TEXT,
@@ -60,3 +63,4 @@ def getRecent():
     row = cursor.fetchone()
     return row
 
+pullStocks()
