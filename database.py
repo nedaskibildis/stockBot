@@ -60,5 +60,3 @@ def getRecent():
     row = cursor.fetchone()
     return row
 
-printDatabase()
-print(getRecent())

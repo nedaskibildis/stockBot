@@ -40,6 +40,9 @@ def scrapeStocks():
         datePublished_date = datePublished_info.find('div', class_='q-value').text
         if datePublished_year == "Today":
             transaction['datePublished'] = datetime.now().strftime("%Y %d %b")
+        elif datePublished_year == "Yesterday":
+            yesterday = datetime.now() - datetime.timedelta(days=1)
+            transaction['datePublished'] = datetime.now().strftime("%Y %d %b")
         else:
             transaction['datePublished'] = datePublished_year + datePublished_date
 
