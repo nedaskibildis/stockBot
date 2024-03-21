@@ -24,8 +24,8 @@ def pullStocks():
     cursor = con.cursor()
     stockTransaction = scrapeStocks()
     for stock in stockTransaction:
-        checkExisting(stock)
-        cursor.execute("INSERT INTO StockTransactions (politician, Stocks, BuyOrSell, SizeOf, PriceOfStock, DateBought, DatePublished) VALUES (:politician, :stocks, :buyOrSell, :sizeOf, :priceOfStock, :dateBought, :datePublished)", stock)
+        if not checkExisting(stock):
+            cursor.execute("INSERT INTO StockTransactions (politician, Stocks, BuyOrSell, SizeOf, PriceOfStock, DateBought, DatePublished) VALUES (:politician, :stocks, :buyOrSell, :sizeOf, :priceOfStock, :dateBought, :datePublished)", stock)
 
     con.commit()
     cursor.close()
@@ -56,11 +56,13 @@ def printDatabase():
     cursor.close()
     con.close()
 
-def getRecent():
+def getRecent(numRecent):
     con = sqlite3.connect("discordBot.db")
     cursor = con.cursor()
-    cursor.execute("SELECT * FROM StockTransactions ORDER BY dateBought DESC LIMIT 1;")
-    row = cursor.fetchone()
-    return row
+    cursor.execute("SELECT * FROM StockTransactions ORDER BY dateBought DESC LIMIT ?;", (numRecent,))
+    rows = cursor.fetchall()
+    return rows
 
+setupDb(dropFirst=True)
 pullStocks()
+printDatabase()
