@@ -29,6 +29,9 @@ def scrapeStocks():
         transaction['buyOrSell'] = element.find('td', class_='q-column--txType').find('span').text
         transaction['sizeOf'] = element.find('td', class_='q-column--value').find('span').text
         transaction['priceOfStock'] = element.find('td', class_='q-column--price').find('span').text
+        
+        if transaction['priceOfStock'] == 'N/A':
+            continue
 
         dateBought_info = element.find('td', class_='q-column--txDate')
         dateBought_year = dateBought_info.find('div', class_='q-label').text
