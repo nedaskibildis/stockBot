@@ -13,7 +13,6 @@ RUN pip install -r requirements.txt
 # Copy the health check script and make it executable
 COPY seleniumHealthCheck.sh /usr/local/bin/seleniumHealthCheck.sh
 RUN chmod +x /usr/local/bin/seleniumHealthCheck.sh
-RUN apt-get update && apt-get install -y ffmpeg
 
 # Copy the rest of the application files
 COPY . .
