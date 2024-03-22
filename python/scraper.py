@@ -1,14 +1,17 @@
+from distutils import command
+from http import server
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import datetime
 
 def scrapeStocks():
+    serverURL = "http://selenium:4444/wd/hub"
     url = "https://www.capitoltrades.com/trades?txDate=30d&per_page=96#"
     options = webdriver.ChromeOptions()
     options.add_argument('--incognito')
     options.add_argument('--headless')
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Remote(command_executor=serverURL ,options=options)
     driver.get(url)
     driver.implicitly_wait(10)
 

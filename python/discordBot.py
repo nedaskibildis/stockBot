@@ -7,7 +7,7 @@ import responses
 # Load Token
 load_dotenv()
 TOKEN: Final[str] = os.getenv('DISCORD_TOKEN')
-
+print(TOKEN)
 # Simple Bot Setup
 intents: Intents = Intents.default()
 intents.message_content = True #NOQA
@@ -50,4 +50,8 @@ def main() -> None:
     client.run(token=TOKEN)
 
 if __name__ == '__main__':
+    print('HELLO')
+    print(TOKEN)
+    print('HELLO')
     main()
+    

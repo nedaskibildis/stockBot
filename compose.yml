@@ -4,6 +4,8 @@ services:
 
     networks: 
       - spring-python
+    env_file: ${PWD}/python/.env
+  
 
   selenium:
     image: seleniarm/standalone-chromium
