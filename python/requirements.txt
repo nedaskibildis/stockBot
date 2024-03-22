@@ -1,0 +1,5 @@
+python-dotenv
+beautifulsoup4
+selenium
+discord
+netcat
