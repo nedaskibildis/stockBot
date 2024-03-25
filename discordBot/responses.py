@@ -1,6 +1,7 @@
 import imp
+import sys
 from random import choice, randint
-from database import getRecent
+from stockBot.database.database import getRecent
 import re
 
 def get_response(userInput: str) -> str:

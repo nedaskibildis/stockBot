@@ -18,4 +18,4 @@ RUN chmod +x /usr/local/bin/seleniumHealthCheck.sh
 COPY . .
 
 # Use health check script to wait for Selenium service
-CMD ["/bin/bash", "-c", "/usr/local/bin/seleniumHealthCheck.sh && python3.10 discordBot.py"]
+CMD ["/bin/bash", "-c", "/usr/local/bin/seleniumHealthCheck.sh && python3.10 scraper.py"]
