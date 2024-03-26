@@ -27,7 +27,7 @@ services:
     networks:
     - backend-mysql
     - scraper-mysql
-    
+
   # Setup The Scraper Service
   scraper:
     build: ./Scraper
@@ -55,3 +55,4 @@ networks:
   backend-mysql:
   backend-frontend:
   backend-discord:
+  scraper-mysql:
