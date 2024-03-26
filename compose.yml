@@ -24,14 +24,23 @@ services:
       # Mysql docker image env vars
       - MYSQL_ROOT_PASSWORD=pwd
       - MYSQL_DATABASE=stockbot_db
+    volumes:
+     - mariadb_data:/var/lib/database  # Maps 'mariadb_data' volume to the data directory of MySQ
     networks:
     - backend-mysql
     - scraper-mysql
+    depends_on:
+      - scraper
 
   # Setup The Scraper Service
   scraper:
     build: ./Scraper
     env_file: ${PWD}/.env
+    environment:
+      - DB_ADDRESS=mysql
+      - DB_DATABASE=stockbot_db
+      - DB_USER=root
+      - DB_PASSWORD=pwd
     networks:
       - scraper-mysql
       - scraper-selenium
@@ -52,7 +61,9 @@ services:
       - "7900:7900"
     networks:
       - scraper-selenium
-
+      
+volumes:
+  mariadb_data:  # Defines a named volume 'mariadb_data' for the MySQL service to use for data persistence
 networks:
   backend-mysql:
   backend-frontend:
