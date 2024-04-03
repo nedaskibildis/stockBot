@@ -29,6 +29,6 @@ export default function MovingGradient({ color }) {
     }, [circleX, circleY, numToAddX, numToAddY, speedX, speedY]);
 
     return (
-        <div className="absolute z-0 w-1/4 h-1/3 top-0 left-0 overflow-hidden" style={{ background: `radial-gradient(circle at center, ${color}, transparent 60%)`, top: `${circleY}px`, left: `${circleX}px` }}></div>
+        <div className="absolute z-0 w-1/3 h-1/2 top-0 left-0 overflow-hidden" style={{ background: `radial-gradient(circle at center, ${color}, transparent 50%)`, top: `${circleY}px`, left: `${circleX}px` }}></div>
     );
 }

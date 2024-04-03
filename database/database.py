@@ -26,7 +26,7 @@ def pullStocks():
     for stock in stockTransaction:
         if not checkExisting(stock):
             cursor.execute("INSERT INTO StockTransactions (politician, Stocks, BuyOrSell, SizeOf, PriceOfStock, DateBought, DatePublished) VALUES (:politician, :stocks, :buyOrSell, :sizeOf, :priceOfStock, :dateBought, :datePublished)", stock)
-
+    
     con.commit()
     cursor.close()
     con.close()

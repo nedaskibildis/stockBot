@@ -1,4 +1,0 @@
-selenium
-beautifulsoup4
-mariadb
-python_dotenv

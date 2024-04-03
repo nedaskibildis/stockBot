@@ -11,7 +11,7 @@ def scrapeStocks():
     options.add_argument('--incognito')
     options.add_argument('--headless')
 
-    driver = webdriver.Remote(command_executor=serverURL ,options=options)
+    driver = webdriver.Chrome(options=options)
     driver.get(url)
     driver.implicitly_wait(10)
 
@@ -54,4 +54,5 @@ def scrapeStocks():
 
         transactions.append(transaction)
     driver.quit()
+    print(transactions)
     return transactions
