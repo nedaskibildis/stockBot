@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         mainWhite: '#ccc5b9',
         mainBlack: '#252422',
+        mainPurple: '#3a0ca3',
       }
     },
   },
