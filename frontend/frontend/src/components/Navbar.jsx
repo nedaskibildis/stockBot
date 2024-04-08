@@ -1,21 +1,33 @@
-import { useState } from "react"
+import React, { useState } from "react"
 
 export default function Navbar() {
     const [isHovered, setIsHovered] = useState(false)
     return (
-        <div className="h-18 px-6 py-3 flex justify-between items-center bg-mainBlack">
-            <div className="text-xl font-extrabold italic text-white">CAPITOLTRACKER</div>
-            <form action="" className="justify-self-center">
-                <input type="text" className="border border-white px-4 p-2 rounded-3xl text-white bg-mainBlack" placeholder="Search..."/>
-            </form>
-            <div onMouseEnter={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)} className="relative mx-3"> <img src="/userProfile.svg" alt="" className="mx-auto"/>
-            {isHovered && (
-                <div onMouseEnter={()=>setIsHovered(true)}
-                 onMouseLeave={()=>setIsHovered(false)}
-                 className="absolute align-middle h-12 bg-mainBlack text-white p-5 rounded-l-xl"> 
-                    Login
-                </div>
-            )}</div>
+        <div className="h-12 flex items-center justify-between p-4">
+            <div className="tracking-widest text-2xl text-mainWhite font-extrabold italic m-6"> CAPITOL TRACKER</div>
+            {!isHovered && (
+            <img 
+            src="/hamburgerMenu.svg" 
+            alt="hamburger menu icon" 
+            className="h-10 mx-4 mt-2 hover:cursor-pointer" 
+            onClick={() => setIsHovered(true)}/>
+            )}
+                {isHovered && (
+                    <div
+                    className="absolute w-[50%] h-12 top-0 right-0 flex justify-evenly items-center rounded-xl mx-4 mt-2"
+                    onClick={() => setIsHovered(false)}> 
+                        <div className=" text-mainWhite hover:font-extrabold p-2">Stocks</div>
+                        <div className=" text-mainWhite hover:font-extrabold">Politicians</div>
+                        <div className=" text-mainWhite hover:font-extrabold">Your Account</div>
+                        <div className="flex justify-center items-center text-mainWhite hover:font-extrabold">
+                            <img src="/logout.svg" alt="" className="h-6 mx-4"/>
+                            <div>Logout</div>
+                        </div>
+                        <div>
+                            <img src="/closeNav.svg" alt="" className="h-12 absolute top-0 hover:cursor-pointer"/>
+                        </div>    
+                    </div>
+            )}
         </div>
     )
 }
