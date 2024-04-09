@@ -1,0 +1,9 @@
+.wrapper {
+    transition: margin .3s; /* Add transition for smooth animation */
+    margin: 0;
+}
+
+.wrapper.is-nav-open {
+    margin-left: 250px; /* Change margin to hide the menu */
+}
+

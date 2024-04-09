@@ -11,6 +11,9 @@ module.exports = {
         mainPurple: '#3a0ca3',
         secondaryPurple: '#C4B6E3',
         borderPurple: '#8871BD'
+      },
+      boxShadow: {
+        'smallOuter': '0 0 0 0 ##3a0ca3'
       }
     },
   },
