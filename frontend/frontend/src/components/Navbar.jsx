@@ -1,38 +1,30 @@
 import React, { useState } from "react";
 
 export default function Navbar() {
-    const [isHovered, setIsHovered] = useState(false);
-
-    function handleClick() {
-        setIsHovered(!isHovered);
-    }
 
     return (
-        <div className={`h-12 flex items-center justify-between p-4`}>
-            <div className="tracking-widest text-2xl text-mainWhite font-extrabold italic m-6"> CAPITOL TRACKER</div>
-            {!isHovered && (
-            <img 
-            src="/hamburgerMenu.svg" 
-            alt="hamburger menu icon" 
-            className="h-10 mx-4 mt-2 hover:cursor-pointer" 
-            onClick={handleClick}/>
-            )}
-                {isHovered && (
-                        <div
-                        className="nav flex w-[40%] justify-evenly items-center"
-                        onClick={handleClick}> 
-                            <div className=" text-mainWhite hover:font-extrabold p-2 ">Stocks</div>
-                            <div className=" text-mainWhite hover:font-extrabold ">Politicians</div>
-                            <div className=" text-mainWhite hover:font-extrabold ">Your Account</div>
-                            <div className="flex justify-center items-center text-mainWhite hover:font-extrabold">
-                                <img src="/logout.svg" alt="" className="h-6 mx-4"/>
-                                <div>Logout</div>
-                            </div>
-                            <div>
-                                <img src="/closeNav.svg" alt="" className="h-12 absolute top-0 hover:cursor-pointer"/>
-                            </div>    
-                        </div>
-            )}
+        <div className={`pb-6 h-[100vh] flex flex-col justify-between bg-mainBlack w-48`}>
+            <div className="h-[30%] flex flex-col">
+                <div className="tracking-widest text-4xl text-mainWhite font-extrabold italic w-full text-center mt-4"> CT</div>
+                <div className="flex flex-col h-full">
+                    <div className="text-mainWhite flex items-center mt-3 h-1/3 hover:bg-secondaryPurple hover:font-bold">
+                        <img src="/stock.svg" alt="" className="pl-4 h-6 mr-3"/>
+                        <div className="">Stocks</div>
+                    </div>
+                    <div className="text-mainWhite flex items-center h-1/3  hover:bg-secondaryPurple hover:font-bold">
+                        <img src="/politician.svg" alt="" className="pl-4 h-6 mr-3"/>
+                        <div className="">Politicians</div>
+                    </div>
+                    <div className="text-mainWhite flex items-center  h-1/3  hover:bg-secondaryPurple hover:font-bold">
+                        <img src="/userProfile.svg" alt="" className="pl-4 h-6 mr-3"/>
+                        <div className="">Your Account</div>
+                    </div>
+                </div>
+            </div>
+            <div className="text-mainWhite flex items-center h-12 hover:font-bold">
+                    <img src="/logout.svg" alt="" className="h-6 mx-4"/>
+                    <div>Logout</div>
+                </div>
         </div>
     );
 }

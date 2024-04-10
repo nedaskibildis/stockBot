@@ -72,16 +72,16 @@ export default function RecentStocksCards() {
     
 ];
     return (
-        <div className="h-[85vh] border border-borderPurple w-[80%] mt-6 rounded-3xl shadow-[0_0px_15px_1px_rgba(0,0,0,0.3)] shadow-mainPurple flex flex-col items-center justify-around">
-            <h2 className="text-mainWhite text-2xl font-semibold text-center mt-3">Recent Stock Purchases</h2>
+        <div className="h-[85vh] border border-borderPurple rounded-3xl shadow-[0_0px_15px_1px_rgba(0,0,0,0.3)] shadow-mainPurple flex flex-col items-center bg-mainPurple justify-around text-mainBlack">
+            <h2 className=" text-2xl font-semibold text-center mt-3">Recent Stock Purchases</h2>
                 {sampleStockPurchases.map((purchase, index) => (
-                    <div key={index} className="text-mainWhite flex">
+                    <div key={index} className=" flex">
                         <p className="px-3 text-left max-w-48">{purchase.name}</p>
                         <p className="px-3 text-left">{purchase.stock}</p>
                         <p className="px-3 text-left">{purchase.buyOrSell}</p>
                     </div>
                 ))}
-            <button className="text-mainWhite border border-mainWhite w-48 py-2 rounded-xl mb-3">View More</button>
+            <button className=" border border-mainBlack w-48 py-2 rounded-xl mb-3">View More</button>
         </div>
     )
 }
