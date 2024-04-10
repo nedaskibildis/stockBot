@@ -17,28 +17,31 @@ export default function RecentPoliticians() {
             numPurchases: "10",
             monthsProfitability: -12.98 
         },
-        {
-            name: "Josh Wood",
-            numPurchases: "103",
-            monthsProfitability: 2.98
-        },
     ]
 
 
     return (
-        <div className="h-[41vh] border border-borderPurple shadow-[0_0px_15px_1px_rgba(0,0,0,0.3)] w-full shadow-mainPurple rounded-2xl p-4 text-mainWhite bg-mainPurple flex flex-col justify-between items-center">
-            <h2 className="text-center text-2xl font-bold">Most Active Politicians Of The Month</h2>
+        <div className="h-[41vh] w-full p-4 text-mainBlack bg-mainWhite my-2 flex flex-col justify-between items-center">
+            <h2 className="text-xl mb-3">Most Active This Month</h2>
+            <div className="flex text-medium font-normal items-center justify-between px-4 w-full text-gray-500">
+                <p>Name</p>
+                <p>Stocks Purchased</p>
+                <p>Total Returns</p>
+            </div>
             {samplePoliticians.map((politician, index) => (
-                <div className="flex text-lg font-normal items-center justify-evenly w-full"> 
+                <>
+                <div className="w-[95%] bg-black h-[0.1px]"></div>
+                <div className="flex text-medium font-normal items-center justify-between px-4 w-full">
                     <p className="w-1/4">{politician.name}</p>
-                    <p className="w-1/4 text-right">{politician.numPurchases}</p>
+                    <p className="w-1/4 text-right px-6">{politician.numPurchases}</p>
                     <p  className="w-1/4 text-right"
                     style={{
                         color: politician.monthsProfitability > 0 ? 'limegreen' : 'red'
                     }}>{politician.monthsProfitability}</p>
                 </div>
+                </>
             ))}
-            <button className="text-center py-2 w-3/4 border border-mainWhite rounded-xl"> View More </button>
+            <button className="text-center py-2 font-bold w-1/2"> .  .  . </button>
         </div>
     )
 }

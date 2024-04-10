@@ -72,7 +72,7 @@ export default function RecentStocksCards() {
     
 ];
     return (
-        <div className="h-[85vh] border border-borderPurple rounded-3xl shadow-[0_0px_15px_1px_rgba(0,0,0,0.3)] shadow-mainPurple flex flex-col items-center bg-mainPurple justify-around text-mainBlack">
+        <div className="h-[85vh] shadow-mainPurple flex flex-col items-center bg-mainWhite justify-around text-mainBlack">
             <h2 className=" text-2xl font-semibold text-center mt-3">Recent Stock Purchases</h2>
                 {sampleStockPurchases.map((purchase, index) => (
                     <div key={index} className=" flex">
